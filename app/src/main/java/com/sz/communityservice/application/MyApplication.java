@@ -8,8 +8,14 @@ import com.sz.communityservice.utils.Utils;
 
 public class MyApplication extends Application {
 
-	private static final String host = "192.168.6.123";
-	private static final int PORT = 11210;
+	/**
+	 * 线上服务器
+	 */
+	public static final String host = "120.25.160.18";
+	/**
+	 * 端口号
+	 */
+	public static final int PORT = 11210;
 	@Override
 	public void onCreate() {
 		// TODO Auto-generated method stub
