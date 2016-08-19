@@ -24,7 +24,7 @@ public class MsgObjectDecoder extends MessageToMessageDecoder<ByteBuf> {
 			MsgObject msgObject = gson.fromJson(msgObjStr, MsgObject.class);
 			out.add(msgObject);
 		}catch (Exception e){
-			Utils.printLog("解析消息错误、消息内容位："+msgObjStr);
+			Utils.printLog("解析消息错误、消息内容为："+msgObjStr);
 		}
 
 	}
