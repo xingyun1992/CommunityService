@@ -60,7 +60,7 @@ public class SecureChatClientHandler extends SimpleChannelInboundHandler<MsgObje
 
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, MsgObject msg) throws Exception {
-		Utils.printLog("客户端读到消息：" + msg.getM()+"消息类型："+msg.getC());
+		Utils.printLog("客户端读到消息：" + msg.getM()+"  消息类型："+msg.getC());
 
 		EventBus.getDefault().post(msg);
 

@@ -63,7 +63,7 @@ public class ChatListActivity extends BaseActivity {
         if (msg.length()== 0)
             return;
 
-        ChatClient.getIntance(this).sendMessage(MsgManage.createChatMsg("jack", msg));
+        ChatClient.getIntance(this).sendMessage(MsgManage.createChatMsg("peter", msg));
         ChatListItemBean chatListItemBean = new ChatListItemBean();
         chatListItemBean.msgtype = 0;
         chatListItemBean.textmsg = msg;
@@ -76,14 +76,19 @@ public class ChatListActivity extends BaseActivity {
     public void onEventMainThread(MsgObject msg) {
         if (msg.getC()== CmdEnum.CHAT.getCmd()){
             //接受到聊天消息,刷新界面
-            ChatObject chatObject = new Gson().fromJson(msg.getM(), ChatObject.class);
+            try {
+                ChatObject chatObject = new Gson().fromJson(msg.getM(), ChatObject.class);
 
-            ChatListItemBean chatListItemBean = new ChatListItemBean();
-            chatListItemBean.msgtype = 1;
-            chatListItemBean.textmsg = chatObject.getContent();
-            chatListItemBean.userid = chatObject.getMsgFrom();
-            chatListItemBeans.add(chatListItemBean);
-            adapter.notifyDataSetChanged();
+                ChatListItemBean chatListItemBean = new ChatListItemBean();
+                chatListItemBean.msgtype = 1;
+                chatListItemBean.textmsg = chatObject.getContent();
+                chatListItemBean.userid = chatObject.getMsgFrom();
+                chatListItemBeans.add(chatListItemBean);
+                adapter.notifyDataSetChanged();
+            }catch (Exception e){
+                //解析异常
+
+            }
 
         }
     }

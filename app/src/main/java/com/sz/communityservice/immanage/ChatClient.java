@@ -16,9 +16,6 @@ import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.ssl.SslContext;
-import io.netty.handler.ssl.SslContextBuilder;
-import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 
 
 /**
@@ -49,13 +46,14 @@ public class ChatClient {
 	}
 
 	public void sendMessage(String msg) {
+		Utils.printLog("发出的消息："+msg);
 		ByteBuf buf = Unpooled.copiedBuffer(msg.getBytes());
 		ChannelFuture lastWriteFuture=channel.writeAndFlush(buf);
 	}
 
 	public void start(final String host, final int port) throws Exception {
-		final SslContext sslCtx = SslContextBuilder.forClient().trustManager(InsecureTrustManagerFactory.INSTANCE)
-				.build();
+//		final SslContext sslCtx = SslContextBuilder.forClient().trustManager(InsecureTrustManagerFactory.INSTANCE)
+//				.build();
 
 		mThread = new Thread(new Runnable() {
 
@@ -67,7 +65,7 @@ public class ChatClient {
 					
 					 bootstrap = new Bootstrap().group(group)
 							.channel(NioSocketChannel.class)
-							.handler(new SecureChatClientInitializer(sslCtx,context));
+							.handler(new SecureChatClientInitializer(null,context));
 					
 					channel = bootstrap.connect(host, port).sync().channel();
 					

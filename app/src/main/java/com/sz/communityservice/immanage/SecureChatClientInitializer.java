@@ -17,7 +17,6 @@ package com.sz.communityservice.immanage;
 
 import android.content.Context;
 
-import com.sz.communityservice.application.MyApplication;
 import com.sz.communityservice.utils.Utils;
 
 import java.util.concurrent.TimeUnit;
@@ -61,7 +60,7 @@ public class SecureChatClientInitializer extends ChannelInitializer<SocketChanne
         Utils.printLog("客户端channel初始化");
         ChannelPipeline pipeline = ch.pipeline();
 
-        pipeline.addLast(sslCtx.newHandler(ch.alloc(), MyApplication.host, MyApplication.PORT));
+//        pipeline.addLast(sslCtx.newHandler(ch.alloc(), MyApplication.host, MyApplication.PORT));
 
         pipeline.addLast(new MsgObjectDecoder());
         pipeline.addLast(new MsgObjectEncoder());
