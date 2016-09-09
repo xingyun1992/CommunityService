@@ -1,6 +1,7 @@
 package com.sz.communityservice.immanage;
 
 import com.google.gson.Gson;
+import com.sz.communityservice.application.MyApplication;
 import com.sz.communityservice.bean.ChatObject;
 import com.sz.communityservice.bean.CmdEnum;
 import com.sz.communityservice.bean.MsgObject;
@@ -41,7 +42,7 @@ public class MsgManage {
         co.setContent(text);
         co.setMsgType("text");
         co.setMsgTo(frieadId);
-        co.setMsgFrom("jack");
+        co.setMsgFrom(MyApplication.mGlobalValue.userid);
         co.setCreateTime(System.currentTimeMillis());
         msgObj.setC(CmdEnum.CHAT.getCmd());
         msgObj.setM(gson.toJson(co));
