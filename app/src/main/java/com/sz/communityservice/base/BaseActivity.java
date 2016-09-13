@@ -3,6 +3,11 @@ package com.sz.communityservice.base;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.sz.communityservice.R;
 
 import de.greenrobot.event.EventBus;
 
@@ -12,6 +17,9 @@ import de.greenrobot.event.EventBus;
 public abstract class BaseActivity extends AppCompatActivity {
 
     protected Activity mActivity;
+    protected ImageView iv_back;
+    protected TextView tv_title;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +36,17 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract void initListener() ;
     protected abstract void initData() ;
 
+    protected void initTitle(String title){
+        tv_title = (TextView) findViewById(R.id.tv_title);
+        iv_back = (ImageView) findViewById(R.id.iv_back);
+        tv_title.setText(title);
+        iv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
 
     @Override
     protected void onDestroy() {

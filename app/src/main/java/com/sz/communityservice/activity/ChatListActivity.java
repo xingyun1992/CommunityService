@@ -16,6 +16,7 @@ import com.sz.communityservice.bean.CmdEnum;
 import com.sz.communityservice.bean.MsgObject;
 import com.sz.communityservice.immanage.ChatClient;
 import com.sz.communityservice.immanage.MsgManage;
+import com.sz.communityservice.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,6 +79,12 @@ public class ChatListActivity extends BaseActivity {
             //接受到聊天消息,刷新界面
             try {
                 ChatObject chatObject = new Gson().fromJson(msg.getM(), ChatObject.class);
+
+                if (chatObject.getMsgFrom()== MyApplication.mGlobalValue.userid){
+                    //自己发的不显示出来
+                    Utils.printLog("发送成功！");
+                    return;
+                }
 
                 ChatListItemBean chatListItemBean = new ChatListItemBean();
                 chatListItemBean.msgtype = 1;

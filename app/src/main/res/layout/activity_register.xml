@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_background"
+    android:orientation="vertical"
+    tools:context="com.sz.communityservice.activity.RegisterActivity">
+
+
+    <include layout="@layout/layout_title"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/bg_edittext"
+        android:layout_marginTop="16dp"
+        android:layout_height="48dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="手机号"
+            />
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="phone"
+            android:maxLength="11"
+            style="@style/edittextStyle"
+            android:hint="请输入手机号"
+
+           />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_edittext"
+        android:layout_height="48dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="验证码"
+            android:layout_marginLeft="8dp"
+            android:id="@+id/textView"
+            />
+        <EditText
+            style="@style/edittextStyle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:maxLength="6"
+            android:id="@+id/et_code"
+            android:hint="请输入验证码"
+            android:layout_height="match_parent" />
+        <TextView
+            style="@style/buttonStyle"
+            android:id="@+id/tv_getcode"
+            android:text="点击获取"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_commit"
+        style="@style/buttonStyle"
+        android:layout_width="match_parent"
+        android:layout_margin="32dp"
+        android:text="注册"
+        />
+
+</LinearLayout>
