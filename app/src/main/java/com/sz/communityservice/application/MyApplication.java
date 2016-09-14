@@ -18,6 +18,18 @@ public class MyApplication extends Application {
 	 */
 	public static final int PORT = 11210;
 
+
+
+
+//	//本机
+//	public static final String host = "10.211.61.56";
+//	/**
+//	 * 端口号
+//	 */
+//	public static final int PORT = 11210;
+
+
+
 	/**
 	 * 全局变量存放地
 	 */

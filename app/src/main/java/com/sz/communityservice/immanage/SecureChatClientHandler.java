@@ -48,7 +48,7 @@ public class SecureChatClientHandler extends SimpleChannelInboundHandler<MsgObje
 
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) {
-		Utils.printLog("链接建立成功，第一次发消息：" + firstMessage.toString());
+		Utils.printLog("链接建立成功，第一次发消息：");
 		ctx.writeAndFlush(firstMessage);
 	}
 

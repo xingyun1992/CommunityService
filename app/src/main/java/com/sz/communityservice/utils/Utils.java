@@ -25,15 +25,11 @@ public class Utils {
         }
     }
 
-    public static void showToast(Context context,String msg){
+    public static void showToast(Context context, String msg) {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 
-    public static void getUid(Context context){
-//        mHead.setImei(new DeviceUuidFactory(context).getDeviceUuid() + "");// 唯一标识
-//        mHead.setSystemCode(context.getResources().getString(
-//                R.string.systemCode));// 手机APP系统编码，区别门户和sdk的YS_PAY_SDK，银盛pos的是YS_MOBILE_POS
-//        mHead.setOsVer(SysInfo.getSDK() + "");// 手机操作系统版本,例如：2.3，4.4.....
+    public static String  getUid(Context context) {
         String PREFS_FILE = "device_id";
         String PREFS_DEVICE_ID = "device_id";
         UUID uuid = null;
@@ -42,21 +38,12 @@ public class Utils {
         final String id = prefs.getString(PREFS_DEVICE_ID, null);
 
         if (id != null) {
-            // Use the ids previously computed and stored in the
-            // prefs file
             uuid = UUID.fromString(id);
-
         } else {
 
             final String androidId = Settings.Secure
                     .getString(context.getContentResolver(),
                             Settings.Secure.ANDROID_ID);
-
-            // Use the Android ID unless it's broken, in which case
-            // fallback on deviceId,
-            // unless it's not available, then fallback on a random
-            // number which we store
-            // to a prefs file
             try {
                 if (!"9774d56d682e549c".equals(androidId)) {
                     uuid = UUID.nameUUIDFromBytes(androidId
@@ -79,6 +66,10 @@ public class Utils {
             prefs.edit().putString(PREFS_DEVICE_ID, uuid.toString()).commit();
 
         }
+        if (uuid!=null){
+            return uuid.toString();
+        }else
+            return "";
 
     }
 

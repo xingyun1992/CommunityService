@@ -25,6 +25,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
+import io.netty.handler.codec.LengthFieldPrepender;
 import io.netty.handler.ssl.SslContext;
 
 /**
@@ -61,7 +62,8 @@ public class SecureChatClientInitializer extends ChannelInitializer<SocketChanne
         ChannelPipeline pipeline = ch.pipeline();
 
 //        pipeline.addLast(sslCtx.newHandler(ch.alloc(), MyApplication.host, MyApplication.PORT));
-
+//        pipeline.addLast(new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter()));
+        pipeline.addLast(new LengthFieldPrepender(4, false));
         pipeline.addLast(new MsgObjectDecoder());
         pipeline.addLast(new MsgObjectEncoder());
 //        pipeline.addLast(new LoggingHandler(LogLevel.INFO));

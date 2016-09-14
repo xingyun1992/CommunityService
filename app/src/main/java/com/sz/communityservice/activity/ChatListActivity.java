@@ -33,6 +33,8 @@ public class ChatListActivity extends BaseActivity {
     protected void initView() {
         setContentView(R.layout.activity_chat_list);
 
+        initTitle("聊天");
+
         etMsg = (EditText) findViewById(R.id.et_msg);
         btSend = (Button) findViewById(R.id.bt_send);
         lvChat = (ListView) findViewById(R.id.lv_chat);
@@ -80,9 +82,9 @@ public class ChatListActivity extends BaseActivity {
             try {
                 ChatObject chatObject = new Gson().fromJson(msg.getM(), ChatObject.class);
 
-                if (chatObject.getMsgFrom()== MyApplication.mGlobalValue.userid){
+                if (chatObject.getMsgFrom().equals(MyApplication.mGlobalValue.userid) ){
                     //自己发的不显示出来
-                    Utils.printLog("发送成功！");
+                    Utils.printLog("聊天信息发送成功！");
                     return;
                 }
 
@@ -96,7 +98,6 @@ public class ChatListActivity extends BaseActivity {
                 //解析异常
 
             }
-
         }
     }
 
