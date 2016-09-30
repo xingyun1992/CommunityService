@@ -1,4 +1,4 @@
-package com.sz.communityservice.activity;
+package com.sz.communityservice.activity.user;
 
 import android.view.View;
 import android.widget.EditText;
@@ -23,7 +23,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void initView() {
         setContentView(R.layout.activity_register);
-
         initTitle("注册");
         etPhone = (EditText) findViewById(R.id.et_phone);
         etCode = (EditText) findViewById(R.id.et_code);

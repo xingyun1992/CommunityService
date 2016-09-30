@@ -73,4 +73,35 @@ public class Utils {
 
     }
 
+    public static String msgAddHead(String msg){
+        int msglength = msg.length();
+        String msghex = Integer.toHexString(msglength);
+        int msghexlenght = msghex.length();
+        if (msghexlenght==1){
+            msghex = "000"+msghex;
+        }else if (msghexlenght==2){
+            msghex = "00"+msghex;
+        }else if (msghexlenght==3){
+            msghex = "0"+msghex;
+        }
+
+        printLog("发送的字符串长度为："+msghex);
+
+        msg = msghex + msg;
+        return msg;
+    }
+
+    public static byte[] msgAddHead(int length){
+
+        byte[] head = new byte[4];
+
+        head[0] = (byte) (length>>>24);
+        head[1]  = (byte) (length>>>16);
+        head[2]  = (byte) (length>>>8);
+        head[3]  = (byte) (length);
+
+        return head;
+
+    }
+
 }

@@ -46,9 +46,20 @@ public class ChatClient {
 	}
 
 	public void sendMessage(String msg) {
-		Utils.printLog("发出的消息："+msg);
-		ByteBuf buf = Unpooled.copiedBuffer(msg.getBytes());
+		Utils.printLog("发出的消息：" + msg);
+		byte[] msgbyte = msg.getBytes();
+		byte[] head = Utils.msgAddHead(msgbyte.length);
+		byte[] msg2 = new byte[msgbyte.length+4];
+		for (int i=0;i<msg2.length;i++){
+			if (i<=3){
+				msg2[i] = head[i];
+			}else {
+				msg2[i] = msgbyte[i-4];
+			}
+		}
+		ByteBuf buf = Unpooled.copiedBuffer(msg2);
 		ChannelFuture lastWriteFuture=channel.writeAndFlush(buf);
+
 	}
 
 	public void start(final String host, final int port) throws Exception {

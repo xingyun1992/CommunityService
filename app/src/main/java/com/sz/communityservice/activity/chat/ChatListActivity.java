@@ -1,4 +1,4 @@
-package com.sz.communityservice.activity;
+package com.sz.communityservice.activity.chat;
 
 import android.view.View;
 import android.widget.Button;

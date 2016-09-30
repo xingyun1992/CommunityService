@@ -1,4 +1,4 @@
-package com.sz.communityservice.activity;
+package com.sz.communityservice.activity.user;
 
 import android.content.Intent;
 import android.view.View;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.sz.communityservice.R;
+import com.sz.communityservice.activity.chat.ChatListActivity;
 import com.sz.communityservice.application.MyApplication;
 import com.sz.communityservice.base.BaseActivity;
 import com.sz.communityservice.bean.CmdEnum;
